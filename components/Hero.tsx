@@ -111,7 +111,7 @@ export default function Hero() {
       className="studio-glow relative flex min-h-screen flex-col overflow-hidden"
     >
       {/* Estátua — desktop: full-bleed, atrás da tipografia */}
-      <div className="absolute inset-y-0 right-[-4%] z-0 hidden w-[58%] lg:block">
+      <div className="absolute inset-y-0 right-[-4%] z-0 hidden w-[48%] lg:block">
         <HeroStatue />
         {/* Scrim para legibilidade do headline sobre a imagem */}
         <div
@@ -186,7 +186,7 @@ export default function Hero() {
       </div>
 
       {/* Conteúdo principal */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[90rem] flex-1 flex-col justify-center px-6 pb-8 pt-32 lg:px-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-[90rem] flex-1 flex-col justify-center px-6 pb-8 pt-32 lg:pl-14 lg:pr-20">
         {/* Estátua — mobile (acima do headline) */}
         <div className="mb-8 lg:hidden">
           <HeroStatueMobile />
@@ -198,9 +198,9 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="display-hero mt-5">
+        <h2 className="display-hero mt-5">
           <span className="block overflow-hidden">
-            <span className="hero-line block">Transformamos</span>
+            <span className="hero-line block ">Transformamos</span>
           </span>
           <span className="block overflow-hidden">
             <span className="hero-line flex items-baseline whitespace-nowrap">
@@ -232,7 +232,7 @@ export default function Hero() {
               />
             </span>
           </span>
-        </h1>
+        </h2>
 
         <div className="mt-9 max-w-xl">
           <p className="hero-sub text-lg leading-relaxed text-white">
@@ -260,7 +260,7 @@ export default function Hero() {
       </div>
 
       {/* Stat cards na base — prova social imediata */}
-      <div className="relative z-10 mx-auto w-full max-w-[90rem] px-6 pb-12 lg:px-20">
+      <div className="relative z-10 mx-auto w-full max-w-[90rem] px-6 pb-12 lg:pl-14 lg:pr-20">
         <div className="grid gap-4 sm:grid-cols-3 lg:max-w-3xl">
           {heroStats.map((s) => (
             <div key={s.rotulo} className="hero-stat glass-card p-6">

@@ -32,7 +32,7 @@ body {
 /* Headline do hero — escala editorial fluida */
 .display-hero {
   @apply font-display font-bold tracking-tight;
-  font-size: clamp(2.9rem, 8.2vw, 8rem);
+  font-size: clamp(2.6rem, 7.2vw, 7rem);
   line-height: 0.94;
   letter-spacing: -0.03em;
 }
