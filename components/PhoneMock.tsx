@@ -16,7 +16,7 @@ export default function PhoneMock({ children, className = "" }: Props) {
       {/* Frame decorativo — não faz parte da árvore acessível */}
       <span aria-hidden="true" className="pointer-events-none">
         <Image
-          src="/phone-frame.png"
+          src="/PHONE.png"
           alt=""
           fill
           priority={false}

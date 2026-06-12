@@ -20,9 +20,43 @@ body {
   color: #fff;
 }
 
-/* ---- Tipografia de display ---- */
+/* ============================================================
+   TIPOGRAFIA
+   ============================================================ */
+
 .display {
-  @apply font-display font-semibold leading-tight tracking-normal;
+  @apply font-display font-bold tracking-tight;
+  line-height: 0.96;
+}
+
+/* Headline do hero — escala editorial fluida */
+.display-hero {
+  @apply font-display font-bold tracking-tight;
+  font-size: clamp(2.9rem, 8.2vw, 8rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+}
+
+/* Títulos de seção */
+.display-section {
+  @apply font-display font-bold tracking-tight;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Statement do manifesto */
+.display-statement {
+  @apply font-display font-semibold;
+  font-size: clamp(1.8rem, 3.8vw, 3.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+/* Micro-label mono — assinatura tipográfica das anotações */
+.label-mono {
+  @apply font-mono text-[10px] uppercase;
+  letter-spacing: 0.22em;
 }
 
 /* Verde — cor principal de ação e keywords */
@@ -37,7 +71,37 @@ body {
   text-shadow: 0 0 24px rgba(186, 27, 250, 0.5);
 }
 
-/* ---- Fita de LED verde ---- */
+/* ============================================================
+   COMPONENTES DE SUPERFÍCIE
+   ============================================================ */
+
+/* Badge pill — "● Agência criativa" */
+.badge-pill {
+  @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-4 py-2 backdrop-blur-sm;
+}
+.badge-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  animation: pulseDot 2.4s ease-in-out infinite;
+}
+.badge-pill.badge-accent::before {
+  background: var(--purple);
+  box-shadow: 0 0 10px var(--purple);
+}
+
+/* Card de vidro — stat cards do hero, bento */
+.glass-card {
+  @apply rounded-2xl border border-line bg-surface/55 backdrop-blur-md;
+}
+
+/* ============================================================
+   FITAS DE LED — assinatura visual
+   ============================================================ */
+
 .led-v {
   width: 2px;
   background: linear-gradient(
@@ -66,7 +130,6 @@ body {
   transform-origin: left;
 }
 
-/* ---- Fita de LED roxa (seções secundárias) ---- */
 .led-v-accent {
   width: 2px;
   background: linear-gradient(
@@ -80,12 +143,39 @@ body {
   transform-origin: top;
 }
 
-/* Vinheta de estúdio */
+/* ============================================================
+   ATMOSFERA
+   ============================================================ */
+
+/* Vinheta de estúdio — roxo domina a atmosfera, verde pontua */
 .studio-glow {
   background:
-    radial-gradient(1200px 500px at 85% -10%, rgba(2, 250, 139, 0.08), transparent 60%),
-    radial-gradient(900px 500px at 0% 110%, rgba(186, 27, 250, 0.14), transparent 60%),
-    radial-gradient(600px 400px at 100% 100%, rgba(186, 27, 250, 0.08), transparent 55%);
+    radial-gradient(1100px 600px at 75% -5%, rgba(186, 27, 250, 0.13), transparent 60%),
+    radial-gradient(900px 540px at -5% 105%, rgba(186, 27, 250, 0.1), transparent 60%),
+    radial-gradient(700px 420px at 95% 90%, rgba(2, 250, 139, 0.06), transparent 55%);
+}
+
+/* Grain — textura de filme global */
+.grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  animation: grainShift 0.9s steps(4) infinite;
+}
+
+/* Texto fantasma — wordmark gigante do footer */
+.ghost-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+  color: transparent;
+  transition: all 0.6s ease;
+}
+.ghost-text:hover {
+  -webkit-text-stroke: 1px rgba(2, 250, 139, 0.55);
+  text-shadow: 0 0 60px rgba(2, 250, 139, 0.25);
 }
 
 /* Scrollbar */
@@ -103,14 +193,38 @@ body {
   background: #ba1bfa55;
 }
 
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
 @keyframes blinkCursor {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
 
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.8); }
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2%, 3%); }
+  50%  { transform: translate(3%, -2%); }
+  75%  { transform: translate(-3%, -3%); }
+  100% { transform: translate(2%, 2%); }
+}
+
 @keyframes floatBadge {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+@keyframes scrollHint {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  45%  { transform: scaleY(1); transform-origin: top; }
+  55%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -120,5 +234,8 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .grain {
+    animation: none;
   }
 }

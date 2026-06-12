@@ -368,13 +368,14 @@ export default function Cases() {
     <section
       id="cases"
       ref={sectionRef}
-      className="mx-auto max-w-7xl px-6 py-28 lg:px-12"
+      className="mx-auto max-w-[90rem] px-6 py-32 lg:px-20"
     >
       {/* cabeçalho */}
-      <h2 className="display text-3xl sm:text-4xl lg:text-5xl">
+      <p className="label-mono text-white/40">( cases )</p>
+      <h2 className="display-section mt-8 max-w-3xl">
         Cases que viraram <span className="kw">crescimento</span>
       </h2>
-      <p className="mt-6 max-w-xl text-muted">
+      <p className="mt-7 max-w-xl leading-relaxed text-muted">
         De hamburgueria a acessórios: estratégia aplicada em segmentos reais de
         João Pessoa e região.
       </p>

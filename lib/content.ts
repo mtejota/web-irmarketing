@@ -53,33 +53,44 @@ export const servicos = [
     titulo: "Tráfego pago",
     descricao:
       "Meta Ads e Google Ads com estratégia local, campanhas de leads e otimização contínua de verba e criativos.",
+    tags: ["Meta Ads", "Google Ads", "Campanhas de leads", "Otimização de verba"],
   },
   {
     titulo: "Social media estratégico",
     descricao:
       "Planejamento de conteúdo, calendário editorial e direção criativa para presença digital que vende.",
+    tags: ["Planejamento de conteúdo", "Calendário editorial", "Direção criativa"],
   },
   {
     titulo: "Audiovisual",
     descricao:
       "Reels, vídeos institucionais, UGC e storytelling em vídeo — captação e roteiro próprios.",
+    tags: ["Reels", "Vídeos institucionais", "UGC", "Roteiro & captação"],
   },
   {
     titulo: "Design de criativos",
     descricao:
       "Criativos para anúncios, peças de campanha e materiais comerciais com identidade forte.",
+    tags: ["Criativos de anúncio", "Peças de campanha", "Materiais comerciais"],
   },
   {
     titulo: "Estratégia de campanhas",
     descricao:
       "Lançamentos, datas sazonais e promoções estruturadas para conversão rápida.",
+    tags: ["Lançamentos", "Datas sazonais", "Promoções"],
   },
   {
     titulo: "Sites e páginas de conversão",
     descricao:
       "Páginas institucionais e de conversão construídas para transformar visita em conversa.",
+    tags: ["Landing pages", "Sites institucionais", "Conversão"],
   },
 ];
+
+/** Statement do manifesto — palavras entre *asteriscos* ganham cor.
+ *  Use *palavra* para verde e _palavra_ para roxo. */
+export const manifesto =
+  "Criamos *estratégia* e _conteúdo_ com venda no centro, garantindo que cada post, anúncio e vídeo gere *resultado* real — nunca pra postar por postar.";
 
 export const cases: Case[] = [
   {

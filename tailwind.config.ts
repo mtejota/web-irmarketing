@@ -23,6 +23,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       boxShadow: {
         neon:         "0 0 18px rgba(2,250,139,0.45), 0 0 60px rgba(2,250,139,0.18)",

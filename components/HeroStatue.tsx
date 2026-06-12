@@ -41,7 +41,7 @@ export function HeroStatueMobile() {
             ease: "sine.inOut",
           });
           gsap.to(glow, {
-            opacity: 0.18,
+            opacity: 0.22,
             duration: 2.6,
             yoyo: true,
             repeat: -1,
@@ -65,11 +65,12 @@ export function HeroStatueMobile() {
   return (
     <div ref={wrapperRef} className="relative flex justify-center">
       <div className="relative w-[280px]">
+        {/* Atmosfera roxa atrás da cabeça */}
         <div
           ref={glowRef}
           aria-hidden
-          className="absolute left-1/2 top-[-8%] h-[180px] w-[180px] -translate-x-1/2 rounded-full bg-primary blur-[80px]"
-          style={{ opacity: 0.12 }}
+          className="absolute left-1/2 top-[-8%] h-[180px] w-[180px] -translate-x-1/2 rounded-full bg-accent blur-[80px]"
+          style={{ opacity: 0.16 }}
         />
         <div ref={imgRef} className="relative z-10">
           <Image
@@ -87,11 +88,12 @@ export function HeroStatueMobile() {
   );
 }
 
-// ─── Desktop (metade direita do hero, com float + mouse-parallax) ───────────
+// ─── Desktop (full-bleed atrás da tipografia, float + mouse-parallax) ───────
 export default function HeroStatue() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const rimRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -100,17 +102,19 @@ export default function HeroStatue() {
       ).matches;
       const img = imgRef.current;
       const glow = glowRef.current;
+      const rim = rimRef.current;
       const wrapper = wrapperRef.current;
-      if (!img || !glow || !wrapper) return;
+      if (!img || !glow || !rim || !wrapper) return;
 
       // ── Entrada ──────────────────────────────────────────────────
       const tl = gsap.timeline({
         onComplete: () => {
           if (reduced) {
-            gsap.set(glow, { opacity: 0.12 });
+            gsap.set(glow, { opacity: 0.18 });
+            gsap.set(rim, { opacity: 0.1 });
             return;
           }
-          // Idle: float suave + pulso do glow
+          // Idle: float suave + respiração da atmosfera
           gsap.to(img, {
             y: "-=14",
             duration: 3.2,
@@ -119,8 +123,15 @@ export default function HeroStatue() {
             ease: "sine.inOut",
           });
           gsap.to(glow, {
-            opacity: 0.18,
+            opacity: 0.26,
             duration: 2.6,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+          });
+          gsap.to(rim, {
+            opacity: 0.15,
+            duration: 3.4,
             yoyo: true,
             repeat: -1,
             ease: "sine.inOut",
@@ -137,11 +148,17 @@ export default function HeroStatue() {
           ease: "power3.out",
         },
         0.2
-      ).from(
-        glow,
-        { opacity: 0, scale: 0.6, duration: 1.4, ease: "power3.out" },
-        0.2
-      );
+      )
+        .from(
+          glow,
+          { opacity: 0, scale: 0.6, duration: 1.4, ease: "power3.out" },
+          0.2
+        )
+        .from(
+          rim,
+          { opacity: 0, scale: 0.7, duration: 1.4, ease: "power3.out" },
+          0.35
+        );
 
       if (reduced) return;
 
@@ -159,7 +176,7 @@ export default function HeroStatue() {
             scrub: true,
           },
         });
-        gsap.to(glow, {
+        gsap.to([glow, rim], {
           opacity: 0,
           ease: "none",
           scrollTrigger: {
@@ -214,13 +231,20 @@ export default function HeroStatue() {
       className="relative flex h-full items-center justify-center"
     >
       {/* Área centralizada para alinhar glow com a imagem */}
-      <div className="relative flex w-full max-w-[520px] justify-center">
-        {/* Glow atrás da cabeça */}
+      <div className="relative flex w-full max-w-[660px] justify-center">
+        {/* Atmosfera roxa — domina o fundo, como na referência */}
         <div
           ref={glowRef}
           aria-hidden
-          className="absolute left-1/2 top-[2%] h-[55%] w-[70%] -translate-x-1/2 rounded-full bg-primary blur-[100px]"
-          style={{ opacity: 0.12 }}
+          className="absolute left-1/2 top-[-2%] h-[62%] w-[80%] -translate-x-1/2 rounded-full bg-accent blur-[120px]"
+          style={{ opacity: 0.18 }}
+        />
+        {/* Rim verde — contraluz da marca */}
+        <div
+          ref={rimRef}
+          aria-hidden
+          className="absolute bottom-[8%] right-[2%] h-[40%] w-[45%] rounded-full bg-primary blur-[110px]"
+          style={{ opacity: 0.1 }}
         />
         {/* Imagem */}
         <div ref={imgRef} className="relative z-10 w-full">

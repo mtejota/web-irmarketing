@@ -4,67 +4,9 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ctas, linkWhatsApp, marca, processo, stats } from "@/lib/content";
+import { ctas, linkWhatsApp, marca, processo } from "@/lib/content";
 
 gsap.registerPlugin(ScrollTrigger);
-
-/* ---------- Números agregados (aparece só quando preenchido) ---------- */
-export function Stats() {
-  const root = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      gsap.utils.toArray<HTMLElement>(".stat-num").forEach((el) => {
-        const alvo = Number(el.dataset.valor ?? 0);
-        const dec = Number(el.dataset.decimais ?? 0);
-        const obj = { v: 0 };
-        gsap.to(obj, {
-          v: alvo,
-          duration: 1.8,
-          ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 85%" },
-          onUpdate: () => {
-            el.textContent = obj.v.toLocaleString("pt-BR", {
-              minimumFractionDigits: dec,
-              maximumFractionDigits: dec,
-            });
-          },
-        });
-      });
-    },
-    { scope: root }
-  );
-
-  if (stats.length === 0) return null;
-
-  return (
-    <section ref={root} className="border-y border-line bg-surface/40 py-24">
-      <p className="mb-10 text-center text-xs uppercase tracking-widest text-white">
-        Nossos Resultados
-      </p>
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-14 px-6 lg:grid-cols-4 lg:divide-x lg:divide-line lg:gap-y-0 lg:px-12">
-        {stats.map((s) => (
-          <div key={s.rotulo} className="flex flex-col items-center px-4 text-center lg:px-10">
-            <p className="display whitespace-nowrap text-4xl leading-none lg:text-5xl">
-              {s.prefixo && <span className="kw-accent text-2xl lg:text-3xl">{s.prefixo}</span>}
-              <span
-                className="stat-num kw tabular-nums"
-                data-valor={s.valor}
-                data-decimais={s.decimais ?? 0}
-              >
-                0
-              </span>
-              <span className="kw">{s.sufixo}</span>
-            </p>
-            <p className="mt-4 max-w-[14ch] text-xs uppercase tracking-widest text-white/90">
-              {s.rotulo}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /* ---------- Processo comercial em 4 passos ---------- */
 export function Processo() {
@@ -72,23 +14,13 @@ export function Processo() {
 
   useGSAP(
     () => {
-      gsap.from(".proc-led", {
-        scaleY: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: root.current,
-          start: "top 75%",
-          end: "bottom 70%",
-          scrub: true,
-        },
-      });
       gsap.from(".proc-step", {
-        x: -32,
+        y: 36,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.65,
         ease: "power3.out",
-        stagger: 0.15,
-        scrollTrigger: { trigger: root.current, start: "top 70%" },
+        stagger: 0.14,
+        scrollTrigger: { trigger: root.current, start: "top 72%", once: true },
       });
     },
     { scope: root }
@@ -98,33 +30,35 @@ export function Processo() {
     <section
       id="processo"
       ref={root}
-      className="mx-auto max-w-7xl px-6 py-28 lg:px-12"
+      className="mx-auto max-w-[90rem] px-6 py-32 lg:px-20"
     >
-      <h2 className="display text-3xl sm:text-4xl lg:text-5xl">
+      <p className="label-mono text-white/40">( como funciona )</p>
+      <h2 className="display-section mt-8 max-w-3xl">
         Do primeiro contato ao <span className="kw">crescimento</span>
       </h2>
 
-      <div className="relative mt-16 lg:ml-6">
-        <div className="proc-led led-v-accent absolute -left-6 top-2 hidden h-[calc(100%-1rem)] lg:block" />
-
-        <ol className="space-y-12">
-          {processo.map((p, i) => (
-            <li key={p.titulo} className="proc-step flex gap-6">
-              <span className={`display shrink-0 text-3xl ${i % 2 === 0 ? "kw" : "kw-accent"}`}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="font-display text-base font-semibold">
-                  {p.titulo}
-                </h3>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-                  {p.descricao}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <ol className="mt-20 border-t border-line">
+        {processo.map((p, i) => (
+          <li
+            key={p.titulo}
+            className="proc-step grid items-baseline gap-3 border-b border-line py-10 lg:grid-cols-12 lg:gap-6"
+          >
+            <span
+              className={`label-mono lg:col-span-2 ${
+                i % 2 === 0 ? "text-primary/80" : "text-accent/80"
+              }`}
+            >
+              ({String(i + 1).padStart(2, "0")})
+            </span>
+            <h3 className="display text-2xl lg:col-span-4 lg:text-3xl">
+              {p.titulo}
+            </h3>
+            <p className="max-w-xl text-sm leading-relaxed text-muted lg:col-span-6">
+              {p.descricao}
+            </p>
+          </li>
+        ))}
+      </ol>
 
       <p className="mt-16 max-w-2xl border-l-2 border-accent pl-6 text-lg italic text-white/80">
         “Em uma conversa estratégica, entendemos o momento da sua empresa,
@@ -157,30 +91,37 @@ export function FinalCTA() {
     <section
       id="contato"
       ref={root}
-      className="studio-glow relative overflow-hidden border-t border-line py-32 text-center"
+      className="studio-glow relative overflow-hidden border-t border-line py-36 text-center lg:py-44"
     >
-      <div className="mx-auto max-w-4xl px-6">
-        <h2 className="display cta-el text-3xl sm:text-5xl">
-          Pronto pra <span className="kw">vender mais</span> com marketing?
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="cta-el badge-pill mx-auto w-fit">
+          <span className="label-mono text-white/70">
+            Diagnóstico gratuito
+          </span>
+        </div>
+
+        <h2 className="display-section cta-el mt-10">
+          Pronto pra <span className="kw">vender mais</span>
+          <br />
+          com marketing?
         </h2>
-        <p className="cta-el mx-auto mt-6 max-w-xl text-white">
-          Diagnóstico gratuito da sua presença digital: analisamos Instagram,
-          tráfego, posicionamento e canais de venda — e mostramos os próximos
-          passos.
-        </p>
-        <p className="cta-el mt-8 text-sm text-white">
-          Quem investiu, já faturou{" "}
+
+        <p className="cta-el mx-auto mt-8 max-w-xl leading-relaxed text-white/80">
+          Analisamos Instagram, tráfego, posicionamento e canais de venda — e
+          mostramos os próximos passos. Quem investiu, já faturou{" "}
           <span className="kw">+R$&nbsp;5&nbsp;milhões</span> com a gente.
         </p>
+
         <a
           href={linkWhatsApp()}
           target="_blank"
           rel="noopener noreferrer"
-          className="cta-el mt-6 inline-block rounded-full bg-primary px-10 py-5 font-display text-base font-semibold text-background shadow-neon transition-transform hover:scale-105"
+          className="cta-el mt-10 inline-block rounded-full bg-primary px-10 py-5 font-display text-base font-bold uppercase tracking-wide text-background shadow-neon transition-transform hover:scale-105"
         >
           {ctas.principal}
         </a>
-        <p className="cta-el mt-11 text-xs uppercase tracking-widest text-white">
+
+        <p className="cta-el label-mono mt-12 text-white/45">
           Sem custo · sem compromisso · resposta rápida no WhatsApp
         </p>
       </div>
@@ -191,20 +132,41 @@ export function FinalCTA() {
 /* ---------- Footer ---------- */
 export function Footer() {
   return (
-    <footer className="border-t border-line py-10 text-sm text-muted">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 sm:flex-row lg:px-12">
-        <p>
-         
-          <span className="kw font-display font-semibold">iR</span>
-          MarketingStudio — {marca.endereco}
-        </p>
+    <footer className="relative overflow-hidden border-t border-line pt-14">
+      <div className="mx-auto max-w-[90rem] px-6 lg:px-20">
+        <div className="flex flex-col items-start justify-between gap-6 text-sm text-muted sm:flex-row sm:items-center">
+          <p className="max-w-xs leading-relaxed">{marca.endereco}</p>
+          <div className="flex items-center gap-8">
+            <a
+              href={marca.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label-mono transition-colors hover:text-primary"
+            >
+              instagram
+            </a>
+            <a
+              href={linkWhatsApp()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label-mono transition-colors hover:text-primary"
+            >
+              whatsapp
+            </a>
+          </div>
+          <p className="label-mono text-white/30">
+            © {new Date().getFullYear()} — joão pessoa, pb
+          </p>
+        </div>
+
+        {/* Wordmark fantasma — assinatura de fechamento */}
         <a
-          href={marca.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition-colors hover:text-accent"
+          href="#"
+          aria-label="Voltar ao topo"
+          className="ghost-text mt-12 block whitespace-nowrap text-center font-display font-bold leading-none"
+          style={{ fontSize: "clamp(3.2rem, 11.5vw, 10.5rem)" }}
         >
-          @irmarketingstudio
+          iRMarketing
         </a>
       </div>
     </footer>

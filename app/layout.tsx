@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import { marca } from "@/lib/content";
 
-const display = DM_Sans({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-display",
 });
 
-const body = Inter({
+const body = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-body",
+});
+
+const mono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -35,9 +40,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="pt-BR"
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+    >
       <body>
         <SmoothScroll>{children}</SmoothScroll>
+        {/* Grain global — textura de filme sobre todo o site */}
+        <div aria-hidden className="grain" />
       </body>
     </html>
   );
