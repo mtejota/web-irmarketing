@@ -1,27 +1,18 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { useGSAP } from "@gsap/react";
 import { ctas, linkWhatsApp } from "@/lib/content";
+import HeroStatue, { HeroStatueMobile } from "./HeroStatue";
 
 gsap.registerPlugin(TextPlugin);
-
-const Hero3D = dynamic(() => import("./Hero3D"), { ssr: false });
 
 const WORDS = ["resultados", "crescimento", "vendas", "sucesso", "impacto"];
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
-  const [show3D, setShow3D] = useState(false);
-
-  useEffect(() => {
-    const wide = window.matchMedia("(min-width: 1024px)").matches;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setShow3D(wide && !reduced);
-  }, []);
 
   useGSAP(
     () => {
@@ -39,7 +30,8 @@ export default function Hero() {
       };
 
       const erase = () => {
-        const len = document.querySelector(".hero-type")?.textContent?.length ?? 0;
+        const len =
+          document.querySelector(".hero-type")?.textContent?.length ?? 0;
         gsap.to(".hero-type", {
           text: { value: "", delimiter: "" },
           duration: len * 0.04,
@@ -49,7 +41,12 @@ export default function Hero() {
       };
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".hero-line", { yPercent: 110, opacity: 0, duration: 0.9, stagger: 0.12 })
+      tl.from(".hero-line", {
+        yPercent: 110,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+      })
         .to(
           ".hero-type",
           {
@@ -60,9 +57,17 @@ export default function Hero() {
           },
           "-=0.05"
         )
-        .from(".hero-sub",  { y: 24, opacity: 0, duration: 0.7 }, "-=0.5")
-        .from(".hero-cta",  { y: 18, opacity: 0, duration: 0.6, stagger: 0.1 }, "-=0.4")
-        .from(".hero-led",  { scaleX: 0, duration: 1.1, ease: "power2.inOut" }, "-=0.6");
+        .from(".hero-sub", { y: 24, opacity: 0, duration: 0.7 }, "-=0.5")
+        .from(
+          ".hero-cta",
+          { y: 18, opacity: 0, duration: 0.6, stagger: 0.1 },
+          "-=0.4"
+        )
+        .from(
+          ".hero-led",
+          { scaleX: 0, duration: 1.1, ease: "power2.inOut" },
+          "-=0.6"
+        );
     },
     { scope: root }
   );
@@ -72,20 +77,17 @@ export default function Hero() {
       ref={root}
       className="studio-glow relative flex min-h-screen items-center overflow-hidden"
     >
-      {/* 3D (desktop) */}
-      {show3D && (
-        <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
-          <Hero3D />
-        </div>
-      )}
-
-      {/* Fallback mobile */}
-      <div
-        aria-hidden
-        className="absolute right-[-20%] top-[10%] h-[420px] w-[420px] rounded-full bg-primary/10 blur-[120px] lg:hidden"
-      />
+      {/* Estátua — desktop (metade direita, absoluta) */}
+      <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+        <HeroStatue />
+      </div>
 
       <div className="relative z-10 w-full px-6 py-28 lg:pl-16 lg:pr-0">
+        {/* Estátua — mobile (acima do headline) */}
+        <div className="mb-8 lg:hidden">
+          <HeroStatueMobile />
+        </div>
+
         <div className="max-w-lg lg:max-w-[42%]">
           <h1 className="display text-4xl sm:text-5xl lg:text-6xl">
             {/* Linha 1 */}
@@ -120,7 +122,8 @@ export default function Hero() {
             para empresas que querem crescer de verdade.
           </p>
           <p className="hero-sub mt-3 text-sm text-white">
-            <span className="kw">+1 bilhão</span> de visualizações geradas para clientes.
+            <span className="kw">+1 bilhão</span> de visualizações geradas para
+            clientes.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
