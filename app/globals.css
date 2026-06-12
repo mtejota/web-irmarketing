@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #02fa8b;
+  --purple: #ba1bfa;
+}
+
+html {
+  scroll-behavior: initial; /* Lenis assume o controle */
+}
+
+body {
+  @apply bg-background text-white font-body antialiased;
+}
+
+::selection {
+  background: var(--purple);
+  color: #fff;
+}
+
+/* ---- Tipografia de display ---- */
+.display {
+  @apply font-display font-semibold leading-tight tracking-normal;
+}
+
+/* Verde — cor principal de ação e keywords */
+.kw {
+  color: var(--green);
+  text-shadow: 0 0 24px rgba(2, 250, 139, 0.45);
+}
+
+/* Roxo — cor de detalhe e acento */
+.kw-accent {
+  color: var(--purple);
+  text-shadow: 0 0 24px rgba(186, 27, 250, 0.5);
+}
+
+/* ---- Fita de LED verde ---- */
+.led-v {
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--green) 18%,
+    var(--green) 82%,
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(2, 250, 139, 0.6), 0 0 40px rgba(2, 250, 139, 0.25);
+  transform-origin: top;
+}
+
+.led-h {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--green) 30%,
+    var(--purple) 70%,
+    transparent
+  );
+  box-shadow:
+    0 0 12px rgba(2, 250, 139, 0.5),
+    0 0 40px rgba(186, 27, 250, 0.25);
+  transform-origin: left;
+}
+
+/* ---- Fita de LED roxa (seções secundárias) ---- */
+.led-v-accent {
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--purple) 18%,
+    var(--purple) 82%,
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(186, 27, 250, 0.6), 0 0 40px rgba(186, 27, 250, 0.25);
+  transform-origin: top;
+}
+
+/* Vinheta de estúdio */
+.studio-glow {
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(2, 250, 139, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 0% 110%, rgba(186, 27, 250, 0.14), transparent 60%),
+    radial-gradient(600px 400px at 100% 100%, rgba(186, 27, 250, 0.08), transparent 55%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e2c;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ba1bfa55;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
