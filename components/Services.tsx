@@ -58,7 +58,7 @@ export default function Services() {
       <h2 className="display max-w-3xl text-3xl sm:text-4xl lg:text-5xl">
         Marketing com <span className="kw">estratégia</span>, não com achismo
       </h2>
-      <p className="mt-6 max-w-xl text-muted">
+      <p className="mt-6 max-w-xl text-white">
         Do diagnóstico à execução: cada serviço existe para gerar venda,
         posicionamento ou conexão — nunca pra postar por postar.
       </p>
@@ -82,7 +82,7 @@ export default function Services() {
               >
                 {s.titulo}
               </h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted">{s.descricao}</p>
+              <p className="mt-4 text-sm leading-relaxed text-white">{s.descricao}</p>
             </article>
           );
         })}

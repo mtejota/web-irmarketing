@@ -9,7 +9,7 @@ import HeroStatue, { HeroStatueMobile } from "./HeroStatue";
 
 gsap.registerPlugin(TextPlugin);
 
-const WORDS = ["resultados", "crescimento", "vendas", "sucesso", "impacto"];
+const WORDS = ["resultados.", "crescimento.", "vendas.", "sucesso.", "impacto."];
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -88,7 +88,7 @@ export default function Hero() {
           <HeroStatueMobile />
         </div>
 
-        <div className="max-w-lg lg:max-w-[42%]">
+        <div className="max-w-lg lg:max-w-[48%]">
           <h1 className="display text-4xl sm:text-5xl lg:text-6xl">
             {/* Linha 1 */}
             <span className="block overflow-hidden">
@@ -121,7 +121,7 @@ export default function Hero() {
             Estratégia, conteúdo criativo, tráfego pago e produção audiovisual
             para empresas que querem crescer de verdade.
           </p>
-          <p className="hero-sub mt-3 text-sm text-white">
+          <p className="hero-sub mt-3 text-[19px] text-white">
             <span className="kw">+1 bilhão</span> de visualizações geradas para
             clientes.
           </p>

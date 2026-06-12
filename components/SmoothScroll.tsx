@@ -15,6 +15,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     if (prefersReduced) return;
 
     const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    (window as any).__lenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -27,6 +28,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     return () => {
       gsap.ticker.remove(raf);
       lenis.destroy();
+      delete (window as any).__lenis;
     };
   }, []);
 

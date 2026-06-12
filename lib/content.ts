@@ -4,11 +4,11 @@
 // preencha aqui. Seções condicionais aparecem automaticamente.
 // ============================================================
 
-export type Metricas = {
-  views: string;
-  curtidas: string;
-  alcance: string;
-  comentarios: string;
+export type Metrica = {
+  rotulo: string;
+  valor: number;
+  sufixo?: string;
+  decimais?: number;
 };
 
 export type Case = {
@@ -19,12 +19,8 @@ export type Case = {
   solucao: string;
   resultado?: string;
   depoimento?: { texto: string; autor: string };
-  instagram?: {
-    usuario: string;
-    /** Caminho relativo em /public, ex: "/cases/meuhotdog.jpg" */
-    imagemUrl?: string;
-    metricas: Metricas;
-  };
+  instagram?: string;    // @handle do perfil
+  metricas?: Metrica[];  // até 4 — vazio = placeholder "—"
 };
 
 export type Stat = {
@@ -92,10 +88,8 @@ export const cases: Case[] = [
     setor: "Alimentação",
     desafio: "Criar campanhas promocionais com apelo comercial e conteúdo leve e compartilhável.",
     solucao: "Campanhas sazonais, ofertas casadas e Reels humorados com identidade visual própria.",
-    instagram: {
-      usuario: "@meuhotdogjp",
-      metricas: { views: "—", curtidas: "—", alcance: "—", comentarios: "—" },
-    },
+    instagram: "@meuhotdogjp",
+    metricas: [],
   },
   {
     slug: "fascino-medieval",
@@ -103,10 +97,8 @@ export const cases: Case[] = [
     setor: "Restaurante temático",
     desafio: "Criar conteúdo à altura da ambientação temática e maximizar compartilhamento.",
     solucao: "Roteiros medievais com NPC, conteúdo em POV e captação imersiva.",
-    instagram: {
-      usuario: "@fascinomedieval",
-      metricas: { views: "—", curtidas: "—", alcance: "—", comentarios: "—" },
-    },
+    instagram: "@fascinomedieval",
+    metricas: [],
   },
   {
     slug: "dogao-083",
@@ -114,10 +106,8 @@ export const cases: Case[] = [
     setor: "Alimentação",
     desafio: "Criar conteúdo à altura da ambientação temática e maximizar compartilhamento.",
     solucao: "Roteiros medievais com NPC, conteúdo em POV e captação imersiva.",
-    instagram: {
-      usuario: "@dogao083",
-      metricas: { views: "—", curtidas: "—", alcance: "—", comentarios: "—" },
-    },
+    instagram: "@dogao083",
+    metricas: [],
   },
   {
     slug: "burgerlandia",
@@ -125,10 +115,8 @@ export const cases: Case[] = [
     setor: "Alimentação",
     desafio: "Criar conteúdo à altura da ambientação temática e maximizar compartilhamento.",
     solucao: "Roteiros medievais com NPC, conteúdo em POV e captação imersiva.",
-    instagram: {
-      usuario: "@burgerlandiajp",
-      metricas: { views: "—", curtidas: "—", alcance: "—", comentarios: "—" },
-    },
+    instagram: "@burgerlandiajp",
+    metricas: [],
   },
   {
     slug: "generoso-sertao",
@@ -136,10 +124,8 @@ export const cases: Case[] = [
     setor: "Alimentação",
     desafio: "Criar conteúdo à altura da ambientação temática e maximizar compartilhamento.",
     solucao: "Roteiros medievais com NPC, conteúdo em POV e captação imersiva.",
-    instagram: {
-      usuario: "@generososertao",
-      metricas: { views: "—", curtidas: "—", alcance: "—", comentarios: "—" },
-    },
+    instagram: "@generososertao",
+    metricas: [],
   },
   {
     slug: "hm-acessorios",
@@ -147,10 +133,8 @@ export const cases: Case[] = [
     setor: "Acessórios",
     desafio: "Criar conteúdo à altura da ambientação temática e maximizar compartilhamento.",
     solucao: "Roteiros medievais com NPC, conteúdo em POV e captação imersiva.",
-    instagram: {
-      usuario: "@hmacessorios",
-      metricas: { views: "—", curtidas: "—", alcance: "—", comentarios: "—" },
-    },
+    instagram: "@hmacessorios",
+    metricas: [],
   },
 ];
 
