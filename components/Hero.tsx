@@ -192,11 +192,11 @@ export default function Hero() {
           <HeroStatueMobile />
         </div>
 
-        <div className="hero-fade badge-pill w-fit">
-          <span className="label-mono text-white">
+        {/* <div className="hero-fade badge-pill w-fit">
+          {/* <span className="label-mono text-white">
             Agência criativa de marketing
-          </span>
-        </div>
+          </span> 
+        </div> */}
 
         <h2 className="display-hero mt-5">
           <span className="block overflow-hidden">
@@ -251,7 +251,7 @@ export default function Hero() {
             </a>
             <a
               href="#cases"
-              className="hero-cta rounded-full border border-line px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-primary hover:text-primary"
+              className="hero-cta rounded-full border border-line px-8 py-3 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-primary hover:text-primary"
             >
               Ver cases
             </a>

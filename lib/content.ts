@@ -64,14 +64,20 @@ export const servicos = [
   {
     titulo: "Audiovisual",
     descricao:
-      "Reels, vídeos institucionais, UGC e storytelling em vídeo — captação e roteiro próprios.",
-    tags: ["Reels", "Vídeos institucionais", "UGC", "Roteiro & captação"],
+      "Reels, vídeos institucionais, criativos e storytelling.",
+    tags: ["Reels", "Vídeos institucionais", "Criativos", "Roteiro & captação"],
   },
   {
-    titulo: "Design de criativos",
+    titulo: "Design & Motion Design",
     descricao:
-      "Criativos para anúncios, peças de campanha e materiais comerciais com identidade forte.",
-    tags: ["Criativos de anúncio", "Peças de campanha", "Materiais comerciais"],
+      "Criativos, animações e materiais visuais desenvolvidos para fortalecer sua marca, gerar atenção e potencializar resultados.",
+    tags: ["Criativos de anúncio", "Peças de campanha", "Motion design"],
+  },
+  {
+    titulo: "Identidade visual",
+    descricao:
+      "Desenvolvemos marcas com personalidade, estratégia e coerência para gerar conexão e lembrança.",
+    tags: ["Personalidade", "Coerência", "Estratégia de marca"],
   },
   {
     titulo: "Estratégia de campanhas",
@@ -90,7 +96,7 @@ export const servicos = [
 /** Statement do manifesto — palavras entre *asteriscos* ganham cor.
  *  Use *palavra* para verde e _palavra_ para roxo. */
 export const manifesto =
-  "Criamos *estratégia* e _conteúdo_ com venda no centro, garantindo que cada post, anúncio e vídeo gere *resultado* real — nunca pra postar por postar.";
+  "Criamos *estratégias* e _conteúdos_ focado em vendas, garantindo que cada post, anúncio e vídeo gere *resultado* reais, nunca postar por postar.";
 
 export const cases: Case[] = [
   {
@@ -152,26 +158,28 @@ export const cases: Case[] = [
 export const stats: Stat[] = [
   {
     valor: 1,
-    sufixo: " bi+",
+    prefixo: "+",  
+    sufixo: "bilhão ",
     rotulo: "de visualizações nos vídeos dos clientes",
     decimais: 1,
   },
   {
     valor: 5,
-    prefixo: "R$ ",
-    sufixo: " mi+",
+    prefixo: " + R$ ",
+    sufixo: " mi",
     rotulo: "faturados por clientes com tráfego pago",
     decimais: 1,
   },
   {
     valor: 600,
-    prefixo: "R$ ",
-    sufixo: " mil+",
+    prefixo: " + R$ ",
+    sufixo: " mil",
     rotulo: "em vendas diretas para delivery",
   },
   {
     valor: 1,
-    sufixo: " mi+",
+    prefixo: "  ",
+    sufixo: " mi +",
     rotulo: "de seguidores gerenciados",
     decimais: 1,
   },
@@ -181,7 +189,7 @@ export const processo = [
   {
     titulo: "Diagnóstico",
     descricao:
-      "Analisamos sua presença digital, canais de venda e posicionamento — sem custo.",
+      "Analisamos sua presença digital, canais de venda e posicionamento  sem custo.",
   },
   {
     titulo: "Estratégia",
