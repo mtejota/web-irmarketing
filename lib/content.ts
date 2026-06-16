@@ -159,7 +159,7 @@ export const stats: Stat[] = [
   {
     valor: 1,
     prefixo: "+ ",  
-    sufixo: "bilhão ",
+    sufixo: " bilhão ",
     rotulo: "de visualizações nos vídeos dos clientes",
     decimais: 1,
   },
