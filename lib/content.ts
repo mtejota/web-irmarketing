@@ -88,8 +88,8 @@ export const servicos = [
   {
     titulo: "Sites e páginas de conversão",
     descricao:
-      "Páginas institucionais e de conversão construídas para transformar visita em conversa.",
-    tags: ["Landing pages", "Sites institucionais", "Conversão"],
+      " E-commerce, páginas institucionais e de conversão construídas para transformar visita em vendas.",
+    tags: ["Landing pages", "Sites institucionais", "E-commerce"],
   },
 ];
 
