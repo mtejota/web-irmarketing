@@ -55,7 +55,7 @@ export default function Bento() {
       className="mx-auto max-w-[90rem] px-6 pb-32 lg:px-20"
     >
       <div className="grid gap-4 lg:grid-cols-12">
-        {/* Card principal — localização + CTA */}
+        {/* z*/}
         <article className="bento-card glass-card relative overflow-hidden p-8 lg:col-span-7 lg:row-span-2 lg:p-12">
           {/* Atmosfera interna */}
           <div
@@ -67,11 +67,7 @@ export default function Bento() {
             }}
           />
           <div className="relative flex h-full flex-col items-start">
-            <div className="badge-pill">
-              <span className="label-mono text-white/70">
-                Disponível para novos projetos
-              </span>
-            </div>
+            
 
             <h3 className="display mt-10 text-3xl sm:text-4xl lg:text-5xl">
               Baseados em{" "}
@@ -109,7 +105,7 @@ export default function Bento() {
             <span className="kw">{bigStat.sufixo}</span>
           </p>
           <p className="mt-4 max-w-[24ch] text-sm text-muted">
-            {bigStat.rotulo} — audiência real, construída com conteúdo.
+            {bigStat.rotulo}  audiência real, construída com conteúdo.
           </p>
         </article>
 
@@ -119,7 +115,7 @@ export default function Bento() {
             &ldquo;
           </span>
           <blockquote className="mt-4 text-lg leading-relaxed text-white/80">
-            Bom marketing parece óbvio — porque a estratégia por trás fica
+            Bom marketing parece óbvio  porque a estratégia por trás fica
             invisível. Nosso trabalho é fazer sua marca parecer inevitável.
           </blockquote>
           <footer className="label-mono mt-8 text-white/40">

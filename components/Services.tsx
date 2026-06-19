@@ -68,7 +68,7 @@ export default function Services() {
               </h2>
               <p className="mt-8 max-w-sm leading-relaxed text-muted">
                 Do diagnóstico à execução: cada serviço existe para gerar
-                venda, posicionamento ou conexão — nunca pra postar por
+                venda, posicionamento ou conexão  nunca pra postar por
                 postar.
               </p>
 

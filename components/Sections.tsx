@@ -107,7 +107,7 @@ export function FinalCTA() {
         </h2>
 
         <p className="cta-el mx-auto mt-8 max-w-xl leading-relaxed text-white/80">
-          Analisamos Instagram, tráfego, posicionamento e canais de venda — e
+          Analisamos Instagram, tráfego, posicionamento e canais de venda  e
           mostramos os próximos passos. Quem investiu, já faturou{" "}
           <span className="kw">+R$&nbsp;5&nbsp;milhões</span> com a gente.
         </p>
@@ -154,7 +154,7 @@ export function Footer() {
               whatsapp
             </a>
           </div>
-          <p className="label-mono text-white/30">
+          <p className="label-mono text-white/70">
             © {new Date().getFullYear()} — joão pessoa, pb
           </p>
         </div>
