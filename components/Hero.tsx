@@ -240,7 +240,7 @@ export default function Hero() {
             para empresas que querem crescer de verdade.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-8">
             <a
               href={linkWhatsApp()}
               target="_blank"
@@ -251,7 +251,7 @@ export default function Hero() {
             </a>
             <a
               href="#cases"
-              className="hero-cta rounded-full border border-line px-8 py-3 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-primary hover:text-primary"
+              className="hero-cta rounded-full border border-line px-8 py-5 font-display text-sm font-bold uppercase tracking-wide text-white transition-colors hover:border-primary hover:text-primary "
             >
               Ver cases
             </a>
