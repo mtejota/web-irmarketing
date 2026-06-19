@@ -376,8 +376,7 @@ export default function Cases() {
         Cases que viraram <span className="kw">crescimento</span>
       </h2>
       <p className="mt-7 max-w-xl leading-relaxed text-muted">
-        De hamburgueria a acessórios: estratégia aplicada em segmentos reais de
-        João Pessoa e região.
+       Estratégias personalizadas, conteúdo que conecta e tráfego que gera resultados de verdade. Conheça alguns dos nossos cases de sucesso e inspire-se para o próximo nível do seu negócio.
       </p>
 
       {/* ── DESKTOP ─────────────────────────────────────────────────────────── */}
